@@ -18,7 +18,7 @@ edit the index.html to include the dependency after angular.js
 
 	index.html:
 	<script src="bower_components/angular/angular.js"></script>
-  <script src="bower_components/angular-route/angular-route.js"></script>
+  	<script src="bower_components/angular-route/angular-route.js"></script>
 
 and edit app.js to add the dependency in the module
 
@@ -43,7 +43,7 @@ lets add a link into index.html to navigate to this new page:
 
 	<h3>Enjoy coding! - Yeoman</h3>
 
-  <a href="#/welcome">Welcome message</a>
+  	<a href="#/welcome">Welcome message</a>
 
 Now cliking on the link it will redirect to the http://localhost:9000/#/welcome page. We want to change that so that it redirects to the http://localhost:9000/welcome page instead
 Edit app.js and add the locationProvider. The full app.js is now:
