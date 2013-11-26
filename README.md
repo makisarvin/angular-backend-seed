@@ -47,6 +47,7 @@ lets add a link into index.html to navigate to this new page:
 
 Now cliking on the link it will redirect to the http://localhost:9000/#/welcome page. We want to change that so that it redirects to the http://localhost:9000/welcome page instead
 Edit app.js and add the locationProvider. The full app.js is now:
+
 	angular.module('app', ['ngRoute'])
 		.config(function ($routeProvider, $locationProvider) {
 			$routeProvider
