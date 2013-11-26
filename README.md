@@ -9,7 +9,7 @@ We will use yeoman. Assuming that yeoman is installed type the following:
 	> yo angular
 
 add the twitter bootstrap and select the defaults. After yeoman finishes installing all the dependencies we need to add a couple of thigs more.
-Since Angular 1.2, the routes are now an extra dependency. for that we need to download the angular-routes.js and install the ngRoutes dependency into
+Since Angular 1.2, the routes are now an extra dependency. for that we need to download the `angular-routes.js` and install the ngRoutes dependency into
 our module. 
 
 	> bower install angular-route
@@ -25,7 +25,7 @@ and edit app.js to add the dependency in the module
 	app.js
 	angular.module('app', ['ngRoute'])
 	
-now type grunt server to load the application. if the browser doesn't start open the browser to http://localhost:9000/
+now type `grunt server` to load the application. if the browser doesn't start open the browser to [http://localhost:9000](http://localhost:9000)
 
 ## Configuring html5 mode
 
@@ -36,7 +36,7 @@ first lets add route. We will create a welcome route, controller and view.
 
 	> yo angular:route welcome
 	
-This will create the controllers/welcome.js file with the WelcomeCtrl, the views/welcome.html file and will configure a route on the /welcome url.
+This will create the `controllers/welcome.js` file with the `WelcomeCtrl`, the `views/welcome.html` file and will configure a route on the `/welcome` url.
 Also it will add this dependency into index.html. 
 
 lets add a link into index.html to navigate to this new page:
@@ -45,8 +45,9 @@ lets add a link into index.html to navigate to this new page:
 
   	<a href="#/welcome">Welcome message</a>
 
-Now cliking on the link it will redirect to the http://localhost:9000/#/welcome page. We want to change that so that it redirects to the http://localhost:9000/welcome page instead
-Edit app.js and add the locationProvider. The full app.js is now:
+Now cliking on the link it will redirect to the [http://localhost:9000/#/welcome](http://localhost:9000/#/welcome) page. 
+We want to change that so that it redirects to the [http://localhost:9000/welcome](http://localhost:9000/welcome) page instead
+Edit `app.js` and add the `$locationProvider`. The full `app.js` is now:
 
 	angular.module('app', ['ngRoute'])
 		.config(function ($routeProvider, $locationProvider) {
@@ -67,15 +68,16 @@ Edit app.js and add the locationProvider. The full app.js is now:
 		});
 
 We added the locationProvider and enabled the html5Mode. Now if you reload the page and you click on the welcome link, the url is 
-now http://localhost:9000/welcome. The problem is though that if we type the url directly then we get a 404 error. 
+now [http://localhost:9000/welcome](http://localhost:9000/welcome). The problem is though that if we type the url directly then we get a 404 error. 
 
 To fix that we need to tell the server to redirect all requests through the index page. That way angular will pick up and load the correct route. 
 
-First we need to install the connect-modrewrite plugin. 
+First we need to install the `connect-modrewrite` plugin. 
 
 	> grunt install connect-modrewrite
 
 Now we need to configure it. Open GruntFile.js on the root of the project and locate the livereload configuration:
+
 	connect: {
 	...
 		livereload: {
@@ -113,13 +115,13 @@ Now go to the top of the file (outside the module.exports) and register the plug
 
 ## Configure Reverse Proxy. 
 Now that we have the navigation configured. there is another problem we have to fix. The application needs to communicate with the backend but the backend is on a different domain. 
-For that we need to setup a reverse proxy. First we need to install the grunt-connect-proxy plugin
+For that we need to setup a reverse proxy. First we need to install the `grunt-connect-proxy` plugin
 
 	> npm install grunt-connect-proxy
 	
 Now we need to configure the plugin. 
 
-On the top of the GruntFile.js add the following line (outside module.exports)
+On the top of the `GruntFile.js` add the following line (outside module.exports)
 
 	var proxySnippet = require('grunt-connect-proxy/lib/utils').proxyRequest;
 	
@@ -150,9 +152,9 @@ And configure it:
 		....
 		}
 
-In this example the server is under http://localhost:8080/rest, so we mapped it to the proxies entry.
+In this example the server is under [http://localhost:8080/rest](http://localhost:8080/rest), so we mapped it to the proxies entry.
 
-Finally you need to register the task. search for grunt.registerTask('server'...
+Finally you need to register the task. search for `grunt.registerTask('server'...`
 
 	grunt.registerTask('server', function (target) {
 		if (target === 'dist') {
@@ -170,4 +172,4 @@ Finally you need to register the task. search for grunt.registerTask('server'...
 		]);
 	});
 	
-You need to add the configureProxies before the connect:livereload
+You need to add the `configureProxies` before the `connect:livereload`
